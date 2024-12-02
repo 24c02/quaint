@@ -42,7 +42,7 @@ class RecordType
   end
 
   def tag(col)
-    "#{parent_base}_#{name.downcase}_#{col}"
+    "#{parent_base}_#{name.downcase.gsub(' ', '_')}_#{col}"
   end
 end
 
