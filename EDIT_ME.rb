@@ -21,7 +21,7 @@ MAIN_THING = Quant.new do
     end
 
     record_type "Shop address" do
-      table "shop_addresses"
+      table "tblYxntrYxcTewLJW"
       searchable_column key: "identifier", name: "identifier"
     end
   end
