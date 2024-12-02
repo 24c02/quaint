@@ -11,10 +11,19 @@ MAIN_THING = Quant.new do
       searchable_column key: "email", name: "email"
     end
 
-    record_type "Shop Order" do
+    record_type "Shop order" do
       table "tbl7Dj23N5tjLanM4"
     end
 
+    record_type "Shop card grant" do
+      table "tblitljiz4cxhF5tr"
+      searchable_column key: "identifier", name: "identifier"
+    end
+
+    record_type "Shop address" do
+      table "shop_addresses"
+      searchable_column key: "identifier", name: "identifier"
+    end
   end
 
   base "Marketing – Shipment Request" do
