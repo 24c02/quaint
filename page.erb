@@ -8,6 +8,14 @@
         body { font-family: sans-serif; }
         header>h1 { display: inline; }
         .error { color: red; }
+        .ext-link {
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KCTx0aXRsZT4KCQlleHRlcm5hbCBsaW5rCgk8L3RpdGxlPgoJPHBhdGggZmlsbD0iIzM2YyIgZD0iTTYgMWg1djVMOC44NiAzLjg1IDQuNyA4IDQgNy4zbDQuMTUtNC4xNkw2IDFaTTIgM2gydjFIMnY2aDZWOGgxdjJhMSAxIDAgMCAxLTEgMUgyYTEgMSAwIDAgMS0xLTFWNGExIDEgMCAwIDEgMS0xWiIvPgo8L3N2Zz4K");
+            background-position: 98% center;
+            background-repeat: no-repeat;
+            background-size: 0.857em;
+            padding-right: 1em;
+            width: fit-content;
+        }
     </style>
     <script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
     <script>
@@ -46,7 +54,7 @@
     <header>
       <h1>Qu</h1>ick <h1>Ai</h1>rtable <h1>N</h1>avigation <h1>T</h1>ool
     </header>
-    <a>(<a href="https://github.com/24c02/quaint/blob/main/EDIT_ME.rb">add more tables</a>)</a>
+    <a>(<a class="ext-link" href="https://github.com/24c02/quaint/blob/main/EDIT_ME.rb">add more tables</a>)</a>
     <ul>
       <% @bases.each do |base| %>
         <li>

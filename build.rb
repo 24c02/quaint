@@ -13,7 +13,7 @@ end
 @bases = MAIN_THING.bases
 
 def go_button(slug)
-  "(<a href='https://airtable.com/#{slug}' target='_blank'>go!</a>)"
+  "(<a class='ext-link'  href='https://airtable.com/#{slug}' target='_blank'>go!</a>)"
 end
 
 def generate_form(id:, label:, slug:, recid: false)
