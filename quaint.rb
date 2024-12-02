@@ -46,7 +46,7 @@ class RecordType
   end
 end
 
-class Quant
+class Quaint
   attr_reader :bases
 
   def initialize(&block)

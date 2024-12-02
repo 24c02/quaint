@@ -1,6 +1,6 @@
-require_relative 'quant'
+require_relative 'quaint'
 
-MAIN_THING = Quant.new do
+MAIN_THING = Quaint.new do
   base "High Seas" do
     api_key ENV["AIRTABLE_PAT"]
     base_id "appTeNFYcUiYfGcR6"
