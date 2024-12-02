@@ -1,0 +1,75 @@
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>QUick Airtable Navigation Tool</title>
+    <style>
+        html { color-scheme: light dark; }
+        body { font-family: sans-serif; }
+        header>h1 { display: inline; }
+        .error { color: red; }
+    </style>
+    <script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
+    <script>
+      function build_query_params(query) {
+          return new URLSearchParams({query}).toString()
+      }
+    </script>
+    <script type="text/hyperscript">
+      def open_record_in_new_tab(form, record)
+        go to url`https://airtable.com/${form's dataset.slug}/${record}` in new window
+      end
+
+      def hit_searchable_column(form, tag)
+        set error_tag to first .error in form
+        put "" into error_tag
+
+        set query to the value of the first <input/> in form
+
+        if not query
+          put "maybe actually enter something :-P" into error_tag
+          exit
+        end
+
+        fetch `/api/${tag}?${build_query_params(query)}` as json with method: "POST", headers: {"Content-Type": "application/json"}
+        set res to the result
+
+        if res.record_id
+          open_record_in_new_tab(form, res.record_id)
+        else
+          put res.message into error_tag
+        end
+      end
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Qu</h1>ick <h1>A</h1>irtable <h1>N</h1>avigation <h1>T</h1>ool
+    </header>
+    <ul>
+      <% @bases.each do |base| %>
+        <li>
+          <h2><%= base.name %> <%= go_button base.id %></h2>
+          <ul>
+            <% base.record_types.each do |record_type| %>
+              <li>
+                <% slug = "#{base.id}/#{record_type.table_id}" %>
+                <h3><%= record_type.name.pluralize %> <%= go_button slug %></h3>
+                <ul>
+                  <li>
+                    <%= generate_form id: record_type.tag("recid"), label: "#{record_type.name} by record ID", slug:, recid: true%>
+                  </li>
+                  <% record_type.searchable_columns.each do |col| %>
+                    <li>
+                      <%= generate_form id: record_type.tag(col[:key]), label: "#{record_type.name} by #{col[:name]}", slug: %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </body>
+</html>
