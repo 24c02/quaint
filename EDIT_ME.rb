@@ -17,7 +17,7 @@ MAIN_THING = Quaint.new do
 
     record_type "Shop card grant" do
       table "tblitljiz4cxhF5tr"
-      searchable_column key: "identifier", name: "identifier"
+      searchable_column key: "identifier", name: "identifier", match_case: true
     end
 
     record_type "Shop address" do

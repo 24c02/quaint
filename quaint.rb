@@ -37,8 +37,8 @@ class RecordType
     @table_id = id
   end
 
-  def searchable_column(key:, name:)
-    @searchable_columns << { key: key, name: name }
+  def searchable_column(key:, name:, match_case: false)
+    @searchable_columns << { key:, name:, match_case: }
   end
 
   def tag(col)

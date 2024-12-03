@@ -16,12 +16,16 @@ class API < Grape::API
           post "#{type.tag column[:key]}" do
             error!({message: "i said enter something >:-/"}) unless params[:query].length > 0
             tbl = Norairrecord.table(base._api_key, base.id, type.table_id)
-            recs = tbl.records filter: "{#{column[:key]}}=\"#{params[:query]}\""
+            filter = if column[:match_case]
+                       "{#{column[:key]}}=\"#{params[:query]}\""
+                     else
+                       "LOWER({#{column[:key]}})=\"#{params[:query].downcase}\""
+                     end
+            recs = tbl.records filter: filter
             unless recs.one?
               error!({message: "#{recs.length} records match."}, 400)
-            else
-              {found: recs.first.airtable_url}
             end
+            {found: recs.first.airtable_url}
           end
         end
       end
