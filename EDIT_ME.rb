@@ -34,6 +34,11 @@ MAIN_THING = Quaint.new do
       table "tbltnDSvmiUH0grQo"
     end
 
+    record_type "SKU" do
+      table "tblvSJMqoXnQyN7co"
+      searchable_column key: "SKU", name: "SKU"
+    end
+
   end
 
 end
