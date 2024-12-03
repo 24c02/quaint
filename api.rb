@@ -1,6 +1,6 @@
 require_relative 'EDIT_ME'
 
-require 'airrecord'
+require 'norairrecord'
 require 'grape'
 
 class API < Grape::API
@@ -15,12 +15,12 @@ class API < Grape::API
         type.searchable_columns.each do |column|
           post "#{type.tag column[:key]}" do
             error!({message: "i said enter something >:-/"}) unless params[:query].length > 0
-            tbl = Airrecord.table(base._api_key, base.id, type.table_id)
+            tbl = Norairrecord.table(base._api_key, base.id, type.table_id)
             recs = tbl.records filter: "{#{column[:key]}}=\"#{params[:query]}\""
             unless recs.one?
               error!({message: "#{recs.length} records match."}, 400)
             else
-              {record_id: recs.first.id}
+              {found: recs.first.airtable_url}
             end
           end
         end

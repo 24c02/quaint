@@ -8,5 +8,6 @@ gem "activesupport", "~> 8.0"
 
 group :server do
   gem "grape", "~> 2.2"
-  gem "airrecord", "~> 1.0"
 end
+
+gem "norairrecord", "~> 0.1.2"

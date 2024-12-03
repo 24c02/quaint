@@ -40,12 +40,11 @@
         end
 
         fetch `/api/${tag}?${build_query_params(query)}` as json with method: "POST", headers: {"Content-Type": "application/json"}
-        set res to the result
-
-        if res.record_id
-          open_record_in_new_tab(form, res.record_id)
+        set :res to the result
+        if :res.found
+          go to url `${:res.found}` in new window
         else
-          put res.message into error_tag
+          put :res.message into error_tag
         end
       end
     </script>
