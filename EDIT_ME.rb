@@ -13,6 +13,7 @@ MAIN_THING = Quaint.new do
 
     record_type "Shop order" do
       table "tbl7Dj23N5tjLanM4"
+      searchable_column key: "external_ref", name: "external reference"
     end
 
     record_type "Shop card grant" do
