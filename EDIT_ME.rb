@@ -42,4 +42,15 @@ MAIN_THING = Quaint.new do
 
   end
 
+  base "You Ship We Ship" do
+    api_key ENV["AIRTABLE_PAT"]
+    base_id "appre1xwKlj49p0d4"
+
+    record_type "YSWS Verification User" do
+      table "tbl2Q2aCWqyBGi9mj"
+      searchable_column key: "Hack Club Slack ID", name: "Slack ID"
+      searchable_column key: "Email", name: "Email"
+    end
+  end
+
 end
