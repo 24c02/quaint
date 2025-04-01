@@ -33,6 +33,7 @@ MAIN_THING = Quaint.new do
 
     record_type "Shipment Request" do
       table "tbltnDSvmiUH0grQo"
+      searchable_column key: "Warehouse–Tracking Number", name: "tracking number"
     end
 
     record_type "SKU" do
