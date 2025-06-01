@@ -54,4 +54,15 @@ MAIN_THING = Quaint.new do
     end
   end
 
+  base "HCB - PM" do
+    api_key ENV["AIRTABLE_PAT"]
+    base_id "appCg71MgTlzeogF3"
+
+    record_type "Wise" do
+      table "tblM0h3IkCimSKEPR"
+      searchable_column key: "User Wise ID", name: "Wise ID"
+      searchable_column key: "Recipient - Email", name: "Email"
+    end
+  end
+  
 end
